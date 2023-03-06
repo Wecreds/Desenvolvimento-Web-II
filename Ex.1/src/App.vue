@@ -1,4 +1,6 @@
-<script>
+<!--  
+<script> 
+
 export default{
   data(){
     return {
@@ -23,7 +25,31 @@ methods: {
   }
 }
 
-/* a */
+</script> 
+-->
+
+<script setup>
+import { ref } from 'vue'
+
+const contador = ref(0);
+
+function incrementarContador(){
+  contador.value++
+}
+
+function decrementarContador(){
+  if(contador.value > 0){
+    contador.value--
+  }else {
+    alert("O contador não pode ser menor que zero.")
+  }
+}
+
+function resetarContador(){
+  contador.value = 0;
+}
+
+
 </script>
 
 <template>
