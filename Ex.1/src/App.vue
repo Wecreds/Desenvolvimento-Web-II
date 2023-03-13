@@ -29,7 +29,7 @@ methods: {
 -->
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref} from 'vue'
 
 const contador = ref(0)
 const definir = ref()
