@@ -39,7 +39,7 @@ function mudarIdade(){
     <hr>
     <p>Para completar 50 anos faltam {{ 50 - idade }}</p>
     <p>O nome tem {{ nome.length }} caracteres.</p>
-    <p>O nome invertido é {{ inverter(nome) }}</p>
+    <p>O nome invertido é {{ inverter(nome.toUpperCase()) }}</p>
     <hr>
     <p>Exemplo de saudação usando a função</p>
     <p>{{ saudacao(nome) }}</p>

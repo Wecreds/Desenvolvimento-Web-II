@@ -29,42 +29,55 @@ methods: {
 -->
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
-const contador = ref(0);
+const contador = ref(0)
+const definir = ref()
 
-function incrementarContador(){
-  contador.value++
-}
+const incrementarContador = () => contador.value++
 
-function decrementarContador(){
-  if(contador.value > 0){
+function decrementarContador() {
+  if (contador.value > 0) {
     contador.value--
-  }else {
-    alert("O contador não pode ser menor que zero.")
+  } else {
+    alert('O contador não pode ser menor que zero.')
   }
 }
+const alterarValor = () => (contador.value = definir.value)
 
-function resetarContador(){
-  contador.value = 0;
+function salvar() {
+  localStorage.setItem('contador', (contador.value))
 }
 
+contador.value = (localStorage.getItem('contador'))
 
 </script>
 
 <template>
+  <div>
+    <button @click="incrementarContador">+</button>
+    <button @click="decrementarContador">-</button>
+    <button @click="resetarContador">Resetar</button> <br />
+    o contador é {{ contador }} <br />
+    <input type="number" v-model="definir" placeholder="Definir valor do contador." />
+    <button @click="alterarValor()">Enviar</button>
 
-<button @click="incrementarContador">+</button>
-<button @click="decrementarContador">-</button>
-<button @click="resetarContador">Resetar</button>
-o contador é {{ contador }}
-
+    <div class="verde" v-if="contador > 10">O valor e maior que 10</div>
+    <div class="vermelho" v-else>O valor e menor que 10</div>
+    <button @click="salvar">Salvar valor do contador</button>
+  </div>
 </template>
-  
-<style scoped>
 
-button{
+<style scoped>
+button {
   font-weight: bold;
 }
 
+.verde {
+  color: green;
+}
+
+.vermelho {
+  color: red;
+}
 </style>
